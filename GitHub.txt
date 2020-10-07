@@ -10,3 +10,6 @@ Clone from GitHub to local:
 Copy the respective SSH-code to the clipboard
 git clone 'paste' (in the terminal)
 
+Push to GitHub (after committing changes):
+git push - pushes changes to GitHub
+(will receive a lot of unnecessary errors, can be omitted with 'git config --global push.default simple' for future use)
