@@ -1,0 +1,81 @@
+# Git Guide (Common Git Commands):
+http://guides.beanstalkapp.com/version-control/common-git-commands.html
+
+# Navigating the project folder:
+pwd - prints the current working directory
+ls - print out the files and folders within that working directory
+cd folder - changes directory to 'folder'
+(~/Desktop/git_lesson)
+
+# Initialise a git repository:
+git init - Initialise (/reinitialise) Git repository
+ls -a - lists all (hidden) files
+(Note: .git should never ever be accessed/changed)
+
+# Basic git commands:
+git status - shows current status of repository
+git add . - add (tracks) all changes to be included in git
+(moves it to the staging area - second phase)
+(git add filename.txt adds only the respective file)
+git commit -m "Message" - Commits the change and describes the change with 'Message'
+
+# IF EMPTY COMMAND LINE (No eiriklismoenandersen.....) try:
+q - to get back to terminal
+Control + C - after p4merge to get back to command entry (don't know why)
+
+# Configure command for displaying the history (using 'hist' as an global alias):
+git config --global alias.hist "log --oneline --graph --decorate --all"
+git hist - to display the simple history we just configured
+
+# Tagging (milestones) (-a for adding a new one):
+git tag -a v1.0 -m "Version 1.0" - tag last commit with 'v1.0' described by 'Version 1.0'
+(can be useful for tracking important changes)
+git show v1.0 - shows details for the commit with tag 'v1.0'
+
+# Branching:
+'git status' will show which branch we are on
+git branch - show branch details (how many, names, and which currently using *)
+git branch -d branch.name - to delete a branch
+(NOTE: Do "branch out" the changes made, simply do the changes, but switch branch before committing!)
+git checkout -b branch.name - to create and switch to a new branch
+(To verify that we changes to commit and at the correct branch simply use git status)
+git checkout master - to switch back to master before merging
+(Git checkout branch.name to switch between branches)
+
+# Merging:
+git merge branch.name - to fast-forward merge 'branch.name' to the master 
+(If no work has been done on the master branch, we call it a 'fast-forward' merge)
+cat filename - to inspect the 'filename' that has a conflict (if merge)
+git mergetool - to open up the p4merge (to fix the conflict)
+(here we select/unselect the features we want to keep and then exit(save))
+(hold shift or add/remove - can also type/delete in directly)
+(will results in residuals (.orig))
+
+# Ignoring residual files:
+touch .gitignore - to create a txt.file for ignoring files
+(open .gitignore - to open the txt.file)
+*.orig (in the txt.file) - to tell git which files to ignore (*)
+git add .gitignore - to add .gitignore file
+
+# Navigate history of project (fix mistake):
+git reset --hard ID - to start over from a point of time ('ID') in the project
+(NOTE: THIS SHOULD BE DONE WITH CARE! Only if we have a clean working directory)
+(Git will ignore everything after this point)
+git reflog - to look up every changes in history (can be used to undo the above)
+
+# Branch out earlier changes:
+git checkout ID - to switch to an earlier point ('ID') in time
+git switch -c alternative-develop - to branch out for creating changes
+(May have to create a .gitignore file again (in this branch))
+git add . - to add the changes
+git commit -m "Alternative way forward" - to commit the changes
+git checkout master - to get back to the master branch
+git merge alternative-develop - to merge the alternative into the master
+(Conflict! - p4merge again...)
+git merge tool - to bring out the p4merge again
+(Make the changes and save - Note: In the lesson to merges are necessary: 1) for the .gitignore and one for the R.script - they should show up automatically in order, or else type 'git mergetool' again)
+
+
+
+
+
