@@ -13,3 +13,19 @@ git clone 'paste' (in the terminal)
 Push to GitHub (after committing changes):
 git push - pushes changes to GitHub
 (will receive a lot of unnecessary errors, can be omitted with 'git config --global push.default simple' for future use)
+
+Adding collaborators (for repository):
+Settings -> Manage access -> Invite a collaborator -> Type in Username/email
+
+Pulling (latest) repository:
+git pull
+
+NOTE: In order to 'push' we must always be on the latest repository
+thus, we must first 'pull' and commit (i.e. resolve any conflicts before 'push')
+
+Conflict in file edits (if '! [rejected]' when trying to 'push', 'pull' first, then:
+git mergetool - merge as before...
+git push
+
+
+
